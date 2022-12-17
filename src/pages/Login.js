@@ -5,6 +5,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
 import '../resourses/auth.css'
+import { url } from "../api_links";
 
 function Login() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ function Login() {
   const onFinish = async (values) => {
     try {
       dispatch(ShowLoading());
-      const response = await axios.post("/api/users/login", values);
+      const response = await axios.post(`${url}/api/users/login`, values);
       dispatch(HideLoading());
       if (response.data.success) {
         message.success(response.data.message);

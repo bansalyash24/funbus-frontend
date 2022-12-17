@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { url } from "../api_links";
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
 import { SetUser } from "../redux/usersSlice";
 import DefaultLayout from "./DefaultLayout";
@@ -16,7 +17,7 @@ function ProtectedRoute({ children }) {
     try {
       dispatch(ShowLoading());
       const response = await axios.post(
-        "/api/users/get-user-by-id",
+        `${url}/api/users/get-user-by-id`,
         {},
         {
           headers: {

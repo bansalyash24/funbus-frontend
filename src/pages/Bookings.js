@@ -8,6 +8,7 @@ import PageTitle from "../components/PageTitle";
 import { axiosInstance } from "../helpers/axiosInstance";
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
 import { useReactToPrint } from "react-to-print";
+import { url } from "../api_links";
 
 function Bookings() {
   const [showPrintModal, setShowPrintModal] = useState(false);
@@ -18,7 +19,7 @@ function Bookings() {
     try {
       dispatch(ShowLoading());
       const response = await axiosInstance.post(
-        "/api/bookings/get-bookings-by-user-id",
+        `${url}/api/bookings/get-bookings-by-user-id`,
         {}
       );
       dispatch(HideLoading());

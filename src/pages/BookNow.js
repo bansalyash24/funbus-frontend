@@ -6,6 +6,7 @@ import SeatSelection from "../components/SeatSelection";
 import { axiosInstance } from "../helpers/axiosInstance";
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
 import StripeCheckout from "react-stripe-checkout";
+import { url } from "../api_links";
 
 function BookNow() {
   const [selectedSeats, setSelectedSeats] = useState([]);
@@ -16,7 +17,7 @@ function BookNow() {
   const getBus = async () => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post("/api/buses/get-bus-by-id", {
+      const response = await axiosInstance.post(`${url}/api/buses/get-bus-by-id`, {
         _id: params.id,
       });
       dispatch(HideLoading());

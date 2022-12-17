@@ -3,6 +3,7 @@ import axios from "axios";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { url } from "../../api_links";
 import BusForm from "../../components/BusForm";
 import PageTitle from "../../components/PageTitle";
 import { axiosInstance } from "../../helpers/axiosInstance";
@@ -16,7 +17,7 @@ function AdminUsers() {
   const getUsers = async () => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post("/api/users/get-all-users", {});
+      const response = await axiosInstance.post(`${url}/api/users/get-all-users`, {});
       dispatch(HideLoading());
       if (response.data.success) {
         setUsers(response.data.data);

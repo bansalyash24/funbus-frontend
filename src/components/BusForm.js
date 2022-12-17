@@ -4,6 +4,7 @@ import { axiosInstance } from "../helpers/axiosInstance";
 import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
 import moment from "moment";
+import { url } from "../api_links";
 
 function BusForm({
   showBusForm,
@@ -20,9 +21,9 @@ function BusForm({
       dispatch(ShowLoading());
       let response = null;
       if (type === "add") {
-        response = await axiosInstance.post("/api/buses/add-bus", values);
+        response = await axiosInstance.post(`${url}/api/buses/add-bus`, values);
       } else {
-        response = await axiosInstance.post("/api/buses/update-bus", {
+        response = await axiosInstance.post(`${url}/api/buses/update-bus`, {
           ...values,
           _id: selectedBus._id,
         });
