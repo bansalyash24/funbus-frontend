@@ -1,1 +1,1 @@
-export const url="https://funbus-backend-production.up.railway.app"
+export const url="https://ivory-caiman-belt.cyclic.app/"
