@@ -35,7 +35,7 @@ function BookNow() {
   const bookNow = async (transactionId) => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post("/api/bookings/book-seat", {
+      const response = await axiosInstance.post(`${url}/api/bookings/book-seat`, {
         bus: bus._id,
         seats: selectedSeats,
         transactionId,
@@ -56,7 +56,7 @@ function BookNow() {
   const onToken = async (token) => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post("/api/bookings/make-payment", {
+      const response = await axiosInstance.post(`${url}/api/bookings/make-payment`, {
         token,
         amount: selectedSeats.length * bus.fare * 100,
       });
